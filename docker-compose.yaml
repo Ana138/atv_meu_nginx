@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  meu-nginx:
+    build: .
+    container_name: meu-nginx
+    ports:
+      - "8080:80"
+    networks:
+      - minha-rede
+    depends_on:
+      - minha-tag
+
+  minha-tag:
+    build: .
+    container_name: minha-tag
+    networks:
+      - minha-rede
+    ports:
+      - "8180:80"
+
+networks:
+  minha-rede:
+    driver: bridge

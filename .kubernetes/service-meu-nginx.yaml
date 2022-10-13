@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-meu-nginx
+spec:
+  selector:
+    app: pod-meu-nginx
+  type: NodePort
+  ports:
+    - port: 8080
+      targetPort: 80
+      nodePort: 32000

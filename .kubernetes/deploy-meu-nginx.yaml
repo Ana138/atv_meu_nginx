@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deploy-meu-nginx
+spec:
+  selector:
+    matchLabels:
+      app: meu-nginx
+  template:
+    metadata:
+      name: pod-meu-nginx
+      labels:
+        app: meu-nginx
+    spec:
+      containers:
+        - name: pod-nginx
+          image: anamendes/avaliacao:questao01
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 80
+  replicas: 5
